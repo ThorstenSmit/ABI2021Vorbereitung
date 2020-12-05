@@ -6,6 +6,7 @@ import grundlagenjava.*;
 import objekorientiertjava.Mensch;
 import prozeduraljava.*;
 
+//Merkmale: öffentlich (public)
 public class ABI2020IFVorbereitung {
 
     /**
@@ -13,8 +14,8 @@ public class ABI2020IFVorbereitung {
      *
      * @param args : Übergabeparameter
      */
-    public static void main(String[] args) {
-
+    public static void main(String[] arx) {
+        
         /**
          * Strukturierte Programmierung
          */
@@ -28,11 +29,11 @@ public class ABI2020IFVorbereitung {
             }
             System.out.println(zahl1);
         }
-
+        
         //import, da nicht im selben package/namespace
         int unterrichtszeitHeute = Grundlagen.MAX_TIME_TODAY;
 
-        //Beispiel: Nutzung von Konstanten als Array-Zugriff
+        //Beispiel: Typumwandlung (engl. typecast)
         String ausgabeIntWert = Integer.toString(unterrichtszeitHeute);
         System.out.println("Minuten Unterricht heute : " + unterrichtszeitHeute + "min");
 
@@ -44,7 +45,6 @@ public class ABI2020IFVorbereitung {
         //http://java.tsmit.de/explizite_typwandlung.html
         //http://java.tsmit.de/datentypen.html
         float floatZahl = (float) decZahl;
-        System.out.println("Typecasted Value: " + floatZahl);
         
         /**
          * Arrays | Folgen | Container
@@ -56,7 +56,7 @@ public class ABI2020IFVorbereitung {
         //ZWEI DEKLARATIONEN FÜHREN ZUM GLEICHEN ERGEBNIS
         
         //Deklaration 1:
-        int[] intArrDekl1 = new int[3];
+        int[] intArrDekl1 = new int[3];       
         intArrDekl1[0]=98;
         intArrDekl1[1]=99;
         intArrDekl1[2]=100;
@@ -83,6 +83,7 @@ public class ABI2020IFVorbereitung {
 
         /**
          * Prozedurale Programmierung Merkmal: instanzungebunden Fähigkeiten
+         * TEILE UND HERRSCHE
          * werden Funktionen genannt Stichwort: static im Funktionskopf Aufruf:
          * <KlassenName>.<staticFunktion>()
          */
@@ -91,7 +92,10 @@ public class ABI2020IFVorbereitung {
 
         //Mischung Konstanten und Funktionsaufruf
         double kaufBetrag = 9.87;
-        double bruttoKaufBetrag = Warenwirtschaft.berechneBrutto(kaufBetrag, Warenwirtschaft.MWST_REGELSATZ_REDUZIERT);
+        
+        double bruttoKaufBetrag = Warenwirtschaft.berechneBrutto(kaufBetrag, Warenwirtschaft.MWST_REDUZIERT);
+        
+        
         System.out.println("Kaufbetrag: " + kaufBetrag + System.lineSeparator() + "Bruttokaufbetrag: " + bruttoKaufBetrag);
 
         //Nutzung von Java.lang in Prozedur z.B. Math.pow
@@ -99,6 +103,7 @@ public class ABI2020IFVorbereitung {
         double kantenLaengeB = 3.25;
         double diagRect = Geometrie.berechneDiagonaleRect(kantenLaengeA, kantenLaengeB);
         System.out.println("Diagonale: " + diagRect);
+        double radEins = Geometrie.deg2Rad(45);
         
         
         
@@ -109,7 +114,14 @@ public class ABI2020IFVorbereitung {
         //Wir bilden eine Instanz | Objekt aus der Vorlage | Klasse | Bauanleitung | Blaupause "Mensch"
         
         Mensch menschInstanz = new Mensch("2012-07-12");
-        menschInstanz.laufen();
+        menschInstanz.setVerletzt(true);
+        menschInstanz.laufen();  //instanzgebundene Methode
+        menschInstanz.setHaarfarbe("blond");
+        menschInstanz.getHaarfarbe();
+        
+        Mensch menschInstanzZwei = new Mensch("2011-04-01");
+        menschInstanzZwei.laufen();
+        menschInstanzZwei.setHaarfarbe("braun");
         
         
         

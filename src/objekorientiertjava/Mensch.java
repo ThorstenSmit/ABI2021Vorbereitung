@@ -1,10 +1,5 @@
 package objekorientiertjava;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 /**
  * Merke: In nativ angelegter OOP wird sehr selten mit dem Zusatz "static"
  * gearbeitet, da die meisten Fähigkeiten nicht statisch sonder Zustandsabhängig
@@ -23,6 +18,7 @@ public class Mensch {
      * setterMethode Wertabfrage über getterMethode
      */
     private String haarfarbe;
+    private boolean verletzt = false;
 
     /**
      * Konstruktor, kann nur einmal mit Hilfe des new-Operators aufgerufen
@@ -33,6 +29,16 @@ public class Mensch {
     public Mensch(String geburtsdatum) {
         this.geburtsdatum = geburtsdatum;
     }
+
+    public boolean isVerletzt() {
+        return verletzt;
+    }
+
+    public void setVerletzt(boolean verletzt) {
+        this.verletzt = verletzt;
+    }
+    
+    
 
     public String getGeburtsdatum() {
         return geburtsdatum;
@@ -47,17 +53,10 @@ public class Mensch {
     }
 
     /**
-     * Diese Fähigkeit ist von Alter abhängig Wir nehmen an, dass man ab dem 80.
-     * Lebensjahr nicht mehr gut läuft...
+     * Diese Fähigkeit ist von verletzt abhängig.
      */
     public void laufen() {
-        LocalDate birthday = LocalDate.parse(this.geburtsdatum);
-        LocalDate now = LocalDate.now();
-        DateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        int d1 = Integer.parseInt(formatter.format(this.geburtsdatum));
-        int d2 = Integer.parseInt(formatter.format(now));
-        int age = (d2 - d1) / 10000;
-        if(age >= 80){
+        if(this.verletzt){
             System.out.println("Das Laufen wird langsamer.");
         }else{
             System.out.println("Das Laufen ist normal.");

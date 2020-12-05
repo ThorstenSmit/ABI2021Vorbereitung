@@ -9,5 +9,9 @@ public class Geometrie {
                 Math.pow(b, 2) //b²
         );
     }
+    
+    public static double deg2Rad(double deg){
+        return (Math.PI/180) * deg;
+    }
 
 }
